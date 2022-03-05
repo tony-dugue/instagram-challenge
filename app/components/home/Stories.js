@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Image, ScrollView, Text} from 'react-native'
+import {LinearGradient} from 'expo-linear-gradient';
 
 // Data
 import colors from "../../config/colors";
@@ -12,10 +13,16 @@ const Stories = () => {
 
         { users.map( (user) => (
           <View key={user.id} style={styles.storyContainer}>
-            <Image style={styles.storyImage} source={user.image}/>
+
+            <LinearGradient colors={['#cc2b5e', '#753a88']} style={styles.linearGradient}>
+              <View style={[styles.storyImageContainer, {borderRadius: 75}]}>
+                <Image style={styles.storyImage} source={user.image}/>
+              </View>
+            </LinearGradient>
+
             <Text style={styles.storyPseudo}>
-              {user.pseudo.length > 10
-                ? user.pseudo.slice(0, 9).toLowerCase() + '...'
+              {user.pseudo.length > 11
+                ? user.pseudo.slice(0, 10).toLowerCase() + '...'
                 : user.pseudo.toLowerCase()}
             </Text>
           </View>
@@ -28,22 +35,39 @@ const Stories = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 13
+    marginBottom: 13,
+    marginTop: 5
   },
   storyContainer: {
-    alignItems: 'center'
+    alignItems: 'center',
+    marginRight: 10,
   },
+
+  // linear gradient
+
+  linearGradient: {
+    height: 80,
+    width: 80,
+    borderRadius: 40, // <-- Outer Border Radius
+  },
+  storyImageContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 3, // <-- Border Width
+    backgroundColor: colors.black,  // contour noir entre image et gradient
+  },
+
   storyImage: {
-    width: 70,
-    height: 70,
+    width: 65,
+    height: 65,
     borderRadius: 50,
-    marginLeft: 6,
-    borderWidth: 3,
-    borderColor: colors.avatarBorder
   },
   storyPseudo: {
-    color: colors.white
-  }
+    marginTop: 5,
+    color: colors.white,
+    fontSize: 14
+  },
 })
 
 export default Stories
