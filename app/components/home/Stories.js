@@ -15,7 +15,7 @@ const Stories = () => {
         { users.map( (user) => (
           <View key={user.id} style={styles.storyContainer}>
 
-            <AvatarRoundWithGradient image={user.image} size={1} borderWidth={3} />
+            <AvatarRoundWithGradient image={user.image} size={0.8} borderWidth={2} />
 
             <Text style={styles.storyPseudo}>
               {user.pseudo.length > 11
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   storyContainer: {
     alignItems: 'center',
-    marginRight: 10,
+    marginRight: 7,
   },
   storyPseudo: {
     marginTop: 5,

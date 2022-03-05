@@ -3,6 +3,7 @@ import { View, StyleSheet, Image } from 'react-native'
 import { Divider } from "react-native-elements";
 
 import PostHeader from "./PostHeader";
+import PostFooter from "./PostFooter";
 
 const Post = ({ post }) => {
   return (
@@ -13,6 +14,10 @@ const Post = ({ post }) => {
 
       <View style={styles.postImageContainer}>
         <Image source={post.imageUrl} style={styles.postImage} />
+      </View>
+
+      <View style={styles.postFooter}>
+        <PostFooter />
       </View>
 
     </View>
@@ -31,6 +36,10 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     resizeMode: 'cover'
+  },
+  postFooter: {
+    marginHorizontal: 15,
+    marginTop: 10
   }
 })
 

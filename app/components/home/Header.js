@@ -18,7 +18,7 @@ const Header = () => {
         </TouchableOpacity>
 
         <TouchableOpacity>
-          <Image style={styles.icon} source={require('../../assets/like--v1.png')}/>
+          <Image style={styles.icon} source={require('../../assets/like.png')}/>
         </TouchableOpacity>
 
         <TouchableOpacity>
@@ -26,7 +26,7 @@ const Header = () => {
             <Text style={styles.unreadBadgeText}>11</Text>
           </View>
 
-          <Image style={styles.icon} source={require('../../assets/facebook-messenger.png')}/>
+          <Image style={[styles.icon, styles.iconMessage]} source={require('../../assets/direct-message.png')}/>
         </TouchableOpacity>
 
       </View>
@@ -55,6 +55,12 @@ const styles = StyleSheet.create({
     height: 30,
     marginLeft: 10,
     resizeMode: 'contain'
+  },
+  iconMessage: {
+    width: 25,
+    height: 25,
+    marginTop: 1,
+    transform: [{ rotate: '20deg' }]
   },
   unreadBadge: {
     backgroundColor: colors.redBadge,
