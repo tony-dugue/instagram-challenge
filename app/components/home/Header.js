@@ -3,7 +3,7 @@ import {View, StyleSheet, Image, TouchableOpacity, Text} from 'react-native'
 
 import colors from "../../config/colors";
 
-export default function Header() {
+const Header = () => {
   return (
     <View style={styles.container}>
 
@@ -74,3 +74,4 @@ const styles = StyleSheet.create({
   }
 })
 
+export default Header

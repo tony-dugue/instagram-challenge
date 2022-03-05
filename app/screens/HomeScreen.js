@@ -2,12 +2,15 @@ import React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native'
 
 import colors from "../config/colors";
-import Header from "../components/home/Header";
 
-export default function HomeScreen() {
+import Header from "../components/home/Header";
+import Stories from "../components/home/Stories";
+
+const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Header />
+      <Stories />
     </SafeAreaView>
   );
 }
@@ -18,3 +21,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.black
   }
 })
+
+export default HomeScreen
