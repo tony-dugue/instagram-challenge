@@ -14,7 +14,12 @@ const Stories = () => {
         { users.map( (user) => (
           <View key={user.id} style={styles.storyContainer}>
 
-            <LinearGradient colors={['#cc2b5e', '#753a88']} style={styles.linearGradient}>
+            <LinearGradient
+              colors={['#6611f5', '#ff009c', '#ff7700']}
+              start={{x: 0, y: 0}}
+              locations={[0, 0.5, 1]}
+              end={{x: 0.5, y: 1}}
+              style={styles.linearGradient}>
               <View style={[styles.storyImageContainer, {borderRadius: 75}]}>
                 <Image style={styles.storyImage} source={user.image}/>
               </View>
