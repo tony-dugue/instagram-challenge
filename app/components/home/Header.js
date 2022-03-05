@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     zIndex: 100
   },
   unreadBadgeText: {
-    color: colors.white,
+    color: colors.text,
     fontWeight: '600',
   }
 })
