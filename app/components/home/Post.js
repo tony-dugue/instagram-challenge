@@ -17,7 +17,7 @@ const Post = ({ post }) => {
       </View>
 
       <View style={styles.postFooter}>
-        <PostFooter />
+        <PostFooter post={post} />
       </View>
 
     </View>
