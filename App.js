@@ -1,6 +1,6 @@
-import HomeScreen from "./app/screens/HomeScreen";
+import NewPostScreen from "./app/screens/NewPostScreen";
 
 export default function App() {
-  return <HomeScreen />
+  return <NewPostScreen />
 }
 
