@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
+import {Image, StyleSheet, TextInput, View, Text, Button} from "react-native";
 import * as Yup from 'yup'
 import { Formik } from 'formik'
+import colors from "../../config/colors";
+import {Divider} from "react-native-elements";
 
 const PLACEHOLDER_IMG = '../../assets/placeholder.png';
 
@@ -11,13 +14,14 @@ const uploadPostSchema = Yup.object().shape({
 
 const FormikPostUploader = () => {
 
-  const [thumbnailUrl, setThumbnailUrl] = useState(PLACEHOLDER_IMG)
+  const [thumbnailUrl, setThumbnailUrl] = useState('')
 
   return (
     <Formik
       initialValues={{ caption: '', imageUrl: '' }}
       onSubmit={ values => console.log(values)}
       validationSchema={uploadPostSchema}
+      validateOnMount={true}
     >
 
       { ({
@@ -28,12 +32,62 @@ const FormikPostUploader = () => {
            isValid
       }) => (
         <>
+          <View style={styles.formContainer}>
+            <Image
+              source={thumbnailUrl ? { uri: thumbnailUrl } : require(PLACEHOLDER_IMG)}
+              style={styles.image}
+            />
 
+            <View style={{ flex: 1, marginLeft: 12 }}>
+              <TextInput
+                style={styles.input}
+                placeholder='Ecrire une légende'
+                placeholderTextColor='gray'
+                multiline={true}
+                onChangeText={handleChange('caption')}
+                onBlur={handleBlur('caption')}
+                value={values.caption}
+              />
+            </View>
+
+          </View>
+
+          <Divider width={0.2} orientation='vertical' />
+
+          <TextInput
+            onChange={ e => setThumbnailUrl((e.nativeEvent.text))}
+            style={[styles.input, { fontSize: 18, marginVertical: 15}]}
+            placeholder="Saisir une url pour l'image"
+            placeholderTextColor='gray'
+            onChangeText={handleChange('imageUrl')}
+            onBlur={handleBlur('imageUrl')}
+            value={values.imageUrl}
+          />
+
+          { errors.imageUrl && <Text style={{ fontSize: 10, color: 'red' }}>{errors.imageUrl}</Text> }
+
+          <Button onPress={handleSubmit} title='Publier' disabled={!isValid}/>
         </>
       )}
 
     </Formik>
   );
 }
+
+const styles = StyleSheet.create({
+  formContainer: {
+    margin: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  image: {
+    width: 100,
+    height: 100
+  },
+  input: {
+    color: colors.text,
+    fontSize: 20
+  }
+})
 
 export default FormikPostUploader
