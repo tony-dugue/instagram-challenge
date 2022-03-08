@@ -1,6 +1,6 @@
-import NewPostScreen from "./app/screens/NewPostScreen";
+import SignedInStack from "./app/navigation/rootNavigation";
 
 export default function App() {
-  return <NewPostScreen />
+  return <SignedInStack />
 }
 
