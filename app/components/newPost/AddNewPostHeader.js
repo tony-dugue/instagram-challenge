@@ -3,10 +3,10 @@ import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native'
 
 import colors from "../../config/colors";
 
-const AddNewPostHeader = () => {
+const AddNewPostHeader = ({ navigation }) => {
   return (
     <View style={styles.headerContainer}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={ () => navigation.goBack()}>
         <Image source={require('../../assets/back.png')} style={{ width: 30, height: 30 }} />
       </TouchableOpacity>
 

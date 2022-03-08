@@ -3,7 +3,7 @@ import {View, StyleSheet, Image, TouchableOpacity, Text} from 'react-native'
 
 import colors from "../../config/colors";
 
-const Header = () => {
+const Header = ({ navigation }) => {
   return (
     <View style={styles.container}>
 
@@ -13,7 +13,7 @@ const Header = () => {
 
       <View style={styles.iconsContainer}>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.push('NewPostScreen')} >
           <Image style={styles.icon} source={require('../../assets/plus-2-math.png')}/>
         </TouchableOpacity>
 

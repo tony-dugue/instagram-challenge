@@ -4,10 +4,10 @@ import { View, StyleSheet } from 'react-native'
 import AddNewPostHeader from "./AddNewPostHeader";
 import FormikPostUploader from "./FormikPostUploader";
 
-const AddNewPost = () => {
+const AddNewPost = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <AddNewPostHeader />
+      <AddNewPostHeader navigation={navigation} />
       <FormikPostUploader />
     </View>
   );
