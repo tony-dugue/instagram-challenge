@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, TextInput, TouchableOpacity, Pressable} from 'react-native'
+import {View, StyleSheet, Text, TextInput, TouchableOpacity, Pressable, Alert} from 'react-native'
 
 import colors from "../../config/colors";
 
@@ -8,7 +8,23 @@ import { Formik } from 'formik'
 import * as Yup from 'yup'
 import Validator from 'email-validator'
 
+// Firebase
+import { auth } from '../../../firebase'
+
 const LoginForm = ({ navigation }) => {
+
+  const onLogin = async (email, password) => {
+    try {
+      await auth.signInWithEmailAndPassword(email, password)
+      console.log("🔥 Firebase Login successful", email, password)
+    } catch(error) {
+      Alert.alert('Oupps ...', error.message + '\n\n ... Que voulez-vous faire !?',
+        [
+          { text: 'Annuler', onPress: () => console.log('Annulation'), style: 'cancel'},
+          { text: 'Créer un compte', onPress: () => navigation.push('SignupScreen')}
+      ])
+    }
+  }
 
   const loginFormSchema = Yup.object().shape({
     email: Yup.string().email().required('Un email est requis'),
@@ -20,7 +36,7 @@ const LoginForm = ({ navigation }) => {
 
       <Formik
         initialValues={{ email: '', password: '' }}
-        onSubmit={ values => console.log(values)}
+        onSubmit={ values => onLogin(values.email, values.password)}
         validationSchema={loginFormSchema}
         validateOnMount={true}
       >
