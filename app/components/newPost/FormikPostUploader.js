@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 import { Formik } from 'formik'
 import colors from "../../config/colors";
 import {Divider} from "react-native-elements";
+import validUrl from 'valid-url'
 
 const PLACEHOLDER_IMG = '../../assets/placeholder.png';
 
@@ -12,14 +13,18 @@ const uploadPostSchema = Yup.object().shape({
   caption: Yup.string().max(2200, 'La légende a atteint la limite de caractères')
 })
 
-const FormikPostUploader = () => {
+const FormikPostUploader = ({ navigation }) => {
 
   const [thumbnailUrl, setThumbnailUrl] = useState('')
 
   return (
     <Formik
       initialValues={{ caption: '', imageUrl: '' }}
-      onSubmit={ values => console.log(values)}
+      onSubmit={ values => {
+        console.log(values)
+        console.log('Le post a été soumis avec succès 🎉')
+        navigation.goBack()
+      }}
       validationSchema={uploadPostSchema}
       validateOnMount={true}
     >
@@ -34,7 +39,7 @@ const FormikPostUploader = () => {
         <>
           <View style={styles.formContainer}>
             <Image
-              source={thumbnailUrl ? { uri: thumbnailUrl } : require(PLACEHOLDER_IMG)}
+              source={thumbnailUrl ? { uri: validUrl.isUri(thumbnailUrl) } : require(PLACEHOLDER_IMG)}
               style={styles.image}
             />
 
