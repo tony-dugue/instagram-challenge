@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, StyleSheet, Text, TextInput, TouchableOpacity, Pressable} from 'react-native'
 
 import colors from "../../config/colors";
@@ -12,7 +12,7 @@ const LoginForm = () => {
 
   const loginFormSchema = Yup.object().shape({
     email: Yup.string().email().required('Un email est requis'),
-    password: Yup.string().required().min(6, 'Votre mot de passe doit faire au moins 8 caractères')
+    password: Yup.string().required().min(6, 'Votre mot de passe doit faire au moins 6 caractères')
   })
 
   return (
