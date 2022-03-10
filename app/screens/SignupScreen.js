@@ -4,7 +4,7 @@ import {View, StyleSheet, Image} from 'react-native'
 import colors from "../config/colors";
 import SignupForm from "../components/signup/SignupForm";
 
-const SignupScreen = () => {
+const SignupScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
 
@@ -12,7 +12,7 @@ const SignupScreen = () => {
         <Image source={require('../assets/instagram-logo.png')} style={styles.logo}/>
       </View>
 
-      <SignupForm />
+      <SignupForm navigation={navigation} />
 
     </View>
   );

@@ -3,7 +3,7 @@ import {View, StyleSheet, Image} from 'react-native'
 import colors from "../config/colors";
 import LoginForm from "../components/login/LoginForm";
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
 
@@ -11,7 +11,7 @@ const LoginScreen = () => {
         <Image source={require('../assets/instagram-logo.png')} style={styles.logo}/>
       </View>
 
-      <LoginForm />
+      <LoginForm navigation={navigation} />
 
     </View>
   );
