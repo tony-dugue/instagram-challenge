@@ -3,6 +3,8 @@ import {StyleSheet, TouchableOpacity, Image, View, Text} from 'react-native'
 
 import colors from "../../config/colors";
 
+import { auth } from '../../../firebase'
+
 import PostFooterComments from "./PostFooterComments";
 
 const postFooterIcons = [
@@ -12,7 +14,7 @@ const postFooterIcons = [
   { name: 'Bookmark', image: require('../../assets/bookmark.png')},
 ]
 
-const PostFooter = ({ post }) => {
+const PostFooter = ({ handleLike, post }) => {
 
   const [commentVisible, setCommentVisible] = useState(false)
 
@@ -21,7 +23,14 @@ const PostFooter = ({ post }) => {
       <View style={{flexDirection: 'row'}}>
 
         <View style={styles.leftFooterIconsContainer}>
-          <Icon imgStyle={{width: 28, height: 28}} imgUrl={postFooterIcons[0].image}/>
+
+          <TouchableOpacity onPress={ () => handleLike(post) }>
+            <Image
+              style={{width: 28, height: 28}}
+              source={post.likes_by_users.includes(auth.currentUser.email) ? postFooterIcons[0].likedImage : postFooterIcons[0].image}
+            />
+          </TouchableOpacity>
+
           <Icon imgStyle={{width: 22, height: 22, marginTop: 4}} imgUrl={postFooterIcons[1].image}/>
           <Icon imgStyle={{width: 22, height: 22, marginTop: 3, transform: [{rotate: '20deg'}]}} imgUrl={postFooterIcons[2].image}/>
         </View>
@@ -32,7 +41,7 @@ const PostFooter = ({ post }) => {
 
       </View>
 
-      <Text style={styles.footerLikes}>{post.likes.toLocaleString('fr')} J'aime</Text>
+      <Text style={styles.footerLikes}>{post.likes_by_users.length.toLocaleString('fr')} J'aime</Text>
 
       <Text style={styles.footerUser}>
         <Text style={{fontWeight: '600'}}>{post.user}</Text>
