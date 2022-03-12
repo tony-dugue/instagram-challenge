@@ -18,7 +18,16 @@
 ## 📷 Screenshots
 ***
 
-
+<table>
+  <tr>
+    <td><img src="./screenshots/login-screen.png" width="300"></td>
+    <td><img src="./screenshots/signup-screen.png" width="300"></td>
+  <tr>
+  <tr>
+    <td><img src="./screenshots/home-screen.png" width="300"></td>
+    <td><img src="./screenshots/new-post-screen.png" width="300"></td>
+  <tr>
+</table>
 
 ## 🚀 Installation
 ***
