@@ -24,10 +24,24 @@
     <td><img src="./screenshots/signup-screen.png" width="300"></td>
   <tr>
   <tr>
-    <td><img src="./screenshots/home-screen.png" width="300"></td>
+    <td><img src="./screenshots/signup-screen-validation.png" width="300"></td>
+ <td><img src="./screenshots/home-screen.png" width="300"></td>
+<tr>
+  <tr>
     <td><img src="./screenshots/new-post-screen.png" width="300"></td>
   <tr>
 </table>
+
+## Fonctionnalités
+***
+
+- Authentification & base de données avec Firebase (Authentication & Cloud Firestore)
+- création de compte et connexion via Firebase
+- Ajout et récupération de post dynamique via Firebase
+- Formulaire avec Formik et validations avec Yup
+- validation dynamique des champs de formulaire avec l'affichage d'une bordure rouge en cas d'erreur
+- Système de like / unlike dynamique avec la base de données
+- Stack navigation
 
 ## 🚀 Installation
 ***
