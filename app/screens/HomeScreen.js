@@ -1,21 +1,24 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {SafeAreaView, StyleSheet, ScrollView} from 'react-native'
 
 import colors from "../config/colors";
-import posts from "../data/posts";
 
 import Header from "../components/home/Header";
 import Stories from "../components/home/Stories";
 import Post from "../components/home/Post";
 import BottomTabs from "../components/home/BottomTabs";
 
+//import posts from "../data/posts";
+
 import {db} from "../../firebase";
 
 const HomeScreen = ({ navigation }) => {
 
+  const [posts, setPosts] = useState([])
+
   useEffect(() => {
     db.collectionGroup('posts').onSnapshot( snapshot => {
-      console.log(snapshot.docs.map(doc => doc.data()))
+      setPosts(snapshot.docs.map(doc => doc.data()))
     })
   }, []);
 

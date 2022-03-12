@@ -13,7 +13,7 @@ const Post = ({ post }) => {
       <PostHeader post={post} />
 
       <View style={styles.postImageContainer}>
-        <Image source={post.imageUrl} style={styles.postImage} />
+        <Image source={{uri: post.imageUrl}} style={styles.postImage} />
       </View>
 
       <View style={styles.postFooter}>

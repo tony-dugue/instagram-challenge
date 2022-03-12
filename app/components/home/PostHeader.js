@@ -10,7 +10,7 @@ const PostHeader = ({ post }) => {
     <View style={styles.postHeaderContainer}>
 
       <View style={styles.avatarContainer}>
-        <AvatarRoundWithGradient image={post.profile_picture} size={0.4} borderWidth={2} />
+        <AvatarRoundWithGradient image={{uri: post.profilePicture}} size={0.4} borderWidth={2} />
         <Text style={styles.postHeaderText}>{post.user}</Text>
       </View>
 
